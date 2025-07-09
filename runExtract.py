@@ -5,7 +5,9 @@ e=censusAcsExtract.censusAcsExtract()
 # Census API Key
 e.apiKey = "3496567ff4554f5b224f23752d6d6ebdb2cdfd2c"
 # 2-Digit Abbreviations (Use "ALL" for all states)
-e.states = ['ALL'] 
+# Call to cencusAcsExtract errors with a list, switched to just a string
+#e.states = ['all']
+e.states = 'ALL'
 # Set ACS Variables and provide a Friendly Name
 e.stats = [
 ['B01001_002E', 'Males'],
@@ -24,7 +26,8 @@ e.stats = [
 ['B09005_003E', 'Child Households | Family | Couple'],
 ['B09005_004E', 'Child Households | Family | Single Male'],
 ['B09005_005E', 'Child Households | Family | Single Female'],
-['B09005_006E', 'Child Households | Nonfamily'],
+#does not exist in the 2022 data, which is the most recent acs5 data set as of Dec 2024 when this was run
+#['B09005_006E', 'Child Households | Nonfamily'],
 ['B15003_001E', 'Education | Total'],
 ['B15003_017E', 'Education | Regular high school diploma'],
 ['B15003_018E', 'Education | GED or alternative credential'],
@@ -110,9 +113,9 @@ e.stats = [
 ['B08141_002E', 'Transportation | No Vehicles']
 ]
 
-# Set call for Zip, Tract or Census Block Group
+# Set call for Zip, Tract or Census Block Group (Arcadia uses Block and ZIP)
 
-e.extractByTract()
+# e.extractByTract()
 
-# e.extractByZip()
-# e.extractByBlockGroup
+e.extractByZip()
+# e.extractByBlockGroup()

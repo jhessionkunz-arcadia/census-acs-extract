@@ -12,8 +12,8 @@ class censusAcsExtract():
         fipsData = getFipsSet(self.states)
         stats = getStats(self.stats)
         c = Census(self.apiKey)
-        
-        self.statData = c.acs5.zipcode(stats['apiInputs'], Census.ALL)
+        # added additional formatting as zips are now nested under states
+        self.statData = c.acs5.state_zipcode(stats['apiInputs'], Census.ALL, Census.ALL)
         outputData(self.statData, stats['statMap'], 'zip-' + str(len(self.stats)-1) + 'vars')
 
     def extractByTract(self):

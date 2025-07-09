@@ -1,7 +1,9 @@
 # census-acs-extract
 Simple method to query Census API for multiple ACS variables, multiple geographies.
 
-### Example
+See first example for how to extract the data. See second example for how to reformat the data into the Arcadia format
+
+### Example 1 - Extract
 
 Requires a Census API Key: https://www.census.gov/developers/
 Also requires DataMade's Census tool: https://github.com/datamade/census
@@ -29,3 +31,15 @@ e.extractByZip()
 e.extractByBlockGroup()
 ```
 Results are exported to \DataOutput\ directory as a CSV file.
+
+### Example 2 - Reformat
+
+Once you have the data extracted, you will need to edit and run the python script "runReformatting.py" once for each data file. This will run the censusReformatting.py file with the proper variables, and takes the data and combines it into one row per zip/block, as well as calculates the arcadia fields based on data points.
+
+You can then take the rf versions of the output for Arcadia use.
+
+In runReformatting, update the file name to be the name of the output file you want to reformat, including the .csv on the end
+
+Also change the geography type based on which file you are using.
+
+Finally, you can turn on printlogging to process only a single zip/block with some logging, then you can examine the output.
